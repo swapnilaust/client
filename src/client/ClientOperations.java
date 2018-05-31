@@ -28,20 +28,30 @@ public class ClientOperations extends Thread {
         this.operations = operations;
     }
     public void run(){
-        if( operations == 1 ){
+        if( operations == 1 ){ // send to server
  
             while( true ){
                 try {
                     BufferedReader inFromClient = new BufferedReader( new InputStreamReader( System.in ) );
 
                     String operation = inFromClient.readLine();
+                    
+                    DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
 
                     if( "Online User Lists".equals(operation)){
 
-                        DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
-
                         outToServer.writeBytes("Online User Lists" + '\n');
 
+                    }else if( "Accecpt Friend Request".equals(operation) ){
+                        
+                        System.out.println("ache eikhane");
+                        
+                        outToServer.writeBytes("Accecpt Friend Request" + '\n');
+                        
+                        String name = inFromClient.readLine();
+                        
+                        outToServer.writeBytes(name + '\n');
+ 
                     }
 
                 } catch (IOException ex) {
@@ -50,7 +60,7 @@ public class ClientOperations extends Thread {
 
 
             }
-        }else if( operations == 2 ){
+        }else if( operations == 2 ){ // receive from server
             try{
                 while( true ){
                     BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
