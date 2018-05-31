@@ -44,14 +44,19 @@ public class ClientOperations extends Thread {
 
                     }else if( "Accecpt Friend Request".equals(operation) ){
                         
-                        System.out.println("ache eikhane");
-                        
                         outToServer.writeBytes("Accecpt Friend Request" + '\n');
                         
                         String name = inFromClient.readLine();
                         
                         outToServer.writeBytes(name + '\n');
  
+                    }else if( "Send Friend Request".equals(operation) ){
+                        
+                        outToServer.writeBytes("Send Friend Request" + '\n');
+                        
+                        String name = inFromClient.readLine();
+                        
+                        outToServer.writeBytes(name + '\n');
                     }
 
                 } catch (IOException ex) {
