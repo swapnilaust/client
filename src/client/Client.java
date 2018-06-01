@@ -110,32 +110,32 @@ public class Client {
         String choose  = sc.next();
             
         if( "Yes".equals(choose) ){
-            System.out.println("Enter UserName: ");
+            System.out.print("Enter UserName: ");
             String userName = sc.next();
-            System.out.println("Enter Password: ");
+            System.out.print("Enter Password: ");
             String password = sc.next();
             while( !logIn( userName, password ) ){
-                System.out.println("Enter UserName: ");
+                System.out.print("Enter UserName: ");
                 userName = sc.next();
-                System.out.println("Enter Password: ");
+                System.out.print("Enter Password: ");
                 password = sc.next();
                 
             }
         }else{
-            System.out.println("Enter Your Name: ");
+            System.out.print("Enter Your Name: ");
             sc.nextLine();
             String name = sc.nextLine();
-            System.out.println("Enter UserName: ");
+            System.out.print("Enter UserName: ");
             String userName = sc.next();
-            System.out.println("Enter Password: ");
+            System.out.print("Enter Password: ");
             String pass = sc.next();
             while( !registerUser( name, userName, pass ) ){
-                System.out.println("Enter Your Name: ");
+                System.out.print("Enter Your Name: ");
                 sc.nextLine();
                 name = sc.nextLine();
-                System.out.println("Enter UserName: ");
+                System.out.print("Enter UserName: ");
                 userName = sc.next();
-                System.out.println("Enter Password: ");
+                System.out.print("Enter Password: ");
                 pass = sc.next();
             }
         }
