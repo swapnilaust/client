@@ -42,17 +42,19 @@ public class Client {
             
             
             if( "ok".equals(confirmation) ){
+                
                 System.out.println("Successfully logged In! ");
+                
                 ClientOperations newclient = new ClientOperations(clientSocket, 1 );
                 newclient.start();
                 
                 ClientOperations newclient2 = new ClientOperations(clientSocket, 2 );
                 newclient2.start();
-                
-                
-                
+
                 return true;
+                
             }else {
+                
                 System.out.println("Wrong Username or password! ");
                 return false;
             }
@@ -81,16 +83,19 @@ public class Client {
             String confirmation = inFromServer.readLine();
             
             if( "ok".equals(confirmation) ){
+                
                 System.out.println("Successfully Register Account! ");
+                
                 ClientOperations newclient = new ClientOperations(clientSocket, 1);
                 newclient.start();
                 
-//                SendReceiveHandler obj1 = new SendReceiveHandler(clientSocket, 1 );
-//                obj1.start();
-//                SendReceiveHandler obj2 = new SendReceiveHandler(clientSocket, 2 );
-//                obj2.start();
+                ClientOperations newclient2 = new ClientOperations(clientSocket, 2 );
+                newclient2.start();
+
                 return true;
+                
             }else {
+                
                 System.out.println("Username already exixts! ");
                 return false;
             }
@@ -110,55 +115,47 @@ public class Client {
         String choose  = sc.next();
             
         if( "Yes".equals(choose) ){
+            
             System.out.print("Enter UserName: ");
             String userName = sc.next();
+            
             System.out.print("Enter Password: ");
             String password = sc.next();
+            
             while( !logIn( userName, password ) ){
+                
                 System.out.print("Enter UserName: ");
                 userName = sc.next();
+                
                 System.out.print("Enter Password: ");
                 password = sc.next();
                 
             }
         }else{
+            
             System.out.print("Enter Your Name: ");
             sc.nextLine();
             String name = sc.nextLine();
+            
             System.out.print("Enter UserName: ");
             String userName = sc.next();
+            
             System.out.print("Enter Password: ");
             String pass = sc.next();
+            
             while( !registerUser( name, userName, pass ) ){
+                
                 System.out.print("Enter Your Name: ");
                 sc.nextLine();
                 name = sc.nextLine();
+                
                 System.out.print("Enter UserName: ");
                 userName = sc.next();
+                
                 System.out.print("Enter Password: ");
                 pass = sc.next();
             }
         }
             
-            /*
-        try {
-            // TODO code application logic here
-
-            Socket clientSocket = new Socket( "localhost", 1235 );
-
-            SendReceiveHandler send = new SendReceiveHandler(clientSocket,  1 );
-            
-            SendReceiveHandler recieve = new SendReceiveHandler(clientSocket,  2 );
-            
-            send.start();
-            
-            recieve.start();
-
-            
-            
-        } catch (IOException ex) {
-            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-        }
-*/
     }
 }
