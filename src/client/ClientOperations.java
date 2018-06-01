@@ -46,6 +46,8 @@ public class ClientOperations extends Thread {
                         
                         outToServer.writeBytes("Accecpt Friend Request" + '\n');
                         
+                        System.out.print("Accecpt Friend Request From : ");
+                        
                         String name = inFromClient.readLine();
                         
                         outToServer.writeBytes(name + '\n');
@@ -53,6 +55,8 @@ public class ClientOperations extends Thread {
                     }else if( "Send Friend Request".equals(operation) ){
                         
                         outToServer.writeBytes("Send Friend Request" + '\n');
+                        
+                        System.out.print("Friend Request To: ");
                         
                         String name = inFromClient.readLine();
                         
@@ -89,9 +93,18 @@ public class ClientOperations extends Thread {
                         String msg = inFromClient.readLine();
                         
                         outToServer.writeBytes(msg + '\n');
+                        
+                    }else if("Broadcast".equals(operation) ){
+                        
+                        outToServer.writeBytes("Broadcast" + '\n');
+                        
+                        System.out.print("Message: ");
+                        
+                        String msg = inFromClient.readLine();
+                        
+                        outToServer.writeBytes(msg + '\n');
                     }
-                    
-                    
+         
                     
                 } catch (IOException ex) {
                     Logger.getLogger(ClientOperations.class.getName()).log(Level.SEVERE, null, ex);
