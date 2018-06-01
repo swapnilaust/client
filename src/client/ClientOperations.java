@@ -57,6 +57,7 @@ public class ClientOperations extends Thread {
                         String name = inFromClient.readLine();
                         
                         outToServer.writeBytes(name + '\n');
+                        
                     }else if( "Unicast".equals(operation) ){
                         
                         outToServer.writeBytes("Unicast" + '\n');
@@ -72,9 +73,26 @@ public class ClientOperations extends Thread {
                         String msg = inFromClient.readLine();
                         
                         outToServer.writeBytes(msg + '\n');
+                          
+                    }else if("Multicast".equals(operation) ){
                         
+                        outToServer.writeBytes("Multicast" + '\n');
                         
+                        System.out.print("To: ");
+                        
+                        String name = inFromClient.readLine();
+                        
+                        outToServer.writeBytes(name + '\n');
+                        
+                        System.out.print("Message: ");
+                        
+                        String msg = inFromClient.readLine();
+                        
+                        outToServer.writeBytes(msg + '\n');
                     }
+                    
+                    
+                    
                 } catch (IOException ex) {
                     Logger.getLogger(ClientOperations.class.getName()).log(Level.SEVERE, null, ex);
                 }
