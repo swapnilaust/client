@@ -26,7 +26,8 @@ public class ClientOperations extends Thread {
     public ClientOperations(Socket clientSocket, int operations) {
         this.clientSocket = clientSocket;
         this.operations = operations;
-    }
+    }    
+    
     public void run(){
         if( operations == 1 ){ // send to server
  
@@ -103,6 +104,11 @@ public class ClientOperations extends Thread {
                         String msg = inFromClient.readLine();
                         
                         outToServer.writeBytes(msg + '\n');
+                    }else if( "log out".equals( operation ) ){
+                        
+                        outToServer.writeBytes("log out" + '\n');
+                        
+                        break;
                     }
          
                     
@@ -115,6 +121,8 @@ public class ClientOperations extends Thread {
         }else if( operations == 2 ){ // receive from server
             try{
                 while( true ){
+
+                    
                     BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
              
                     String modifiedSentence = inFromServer.readLine();
@@ -147,6 +155,7 @@ public class ClientOperations extends Thread {
                     Logger.getLogger(ClientOperations.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        System.out.println("asche sesh e");
     }
     
     
