@@ -109,6 +109,60 @@ public class ClientOperations extends Thread {
                         outToServer.writeBytes("log out" + '\n');
                         
                         break;
+                    }else if( "Create Chat Room".equals( operation ) ){
+                        
+                        outToServer.writeBytes("Create Chat Room" + '\n');
+                        
+                        System.out.print("Chat Room Name: ");
+                        
+                        String name = inFromClient.readLine();
+                        
+                        outToServer.writeBytes(name + '\n');
+
+                    }else if( "Open Chat Room".equals( operation ) ){
+                        
+                        outToServer.writeBytes("Open Chat Room" + '\n');
+                        
+                        System.out.print("Chat Room Name: ");
+                        
+                        String name = inFromClient.readLine();
+                        
+                        outToServer.writeBytes(name + '\n');
+                        
+                        // dhore nilam sob somoy thik naam dibe
+                        
+                        String msg = inFromClient.readLine();
+                        
+                        outToServer.writeBytes(msg + '\n');
+                        
+                        while( true ){
+                            
+                            if( "Exit Chat Room".equals(msg) ) break;
+                            
+                            msg = inFromClient.readLine();
+                            
+                            outToServer.writeBytes(msg + '\n');  
+   
+                        }
+                        
+                        System.out.println("Chat Room Closed!");
+
+                    }else if( "Add Friend to Chat Room".equals( operation ) ){
+                        
+                        outToServer.writeBytes("Add Friend to Chat Room" + '\n');
+                        
+                        System.out.print("Chat Room Name: ");
+                        
+                        String cname = inFromClient.readLine();
+                        
+                        outToServer.writeBytes(cname + '\n');
+                        
+                        System.out.print("User Name: ");
+                        
+                        String name = inFromClient.readLine();
+                        
+                        outToServer.writeBytes(name + '\n');
+
                     }
          
                     
