@@ -163,6 +163,8 @@ public class ClientOperations extends Thread {
                         
                         outToServer.writeBytes(name + '\n');
 
+                    }else if( "Chat History".equals( operation ) ){
+                        outToServer.writeBytes("Chat History" + '\n');
                     }
          
                     
@@ -203,13 +205,13 @@ public class ClientOperations extends Thread {
                         System.out.println(modifiedSentence);
                     }
                     
-                    System.out.println("receive msg complete!");
+                    //System.out.println("receive msg complete!");
                 }
             }catch (IOException ex) {
                     Logger.getLogger(ClientOperations.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        System.out.println("asche sesh e");
+
     }
     
     
